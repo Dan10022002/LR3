@@ -105,11 +105,11 @@ int main() {
     std::cin >> Str2;
     Str.replace(0,3,Str2);
     Str.replace(8+Str2.length()-3,3,Str2);
-    Str.replace(14+Str2.length()-3+1,3,Str2);
-    Str.replace(23+Str2.length()-3+2,3,Str2);
-    Str.replace(30+Str2.length()-3+3,3,Str2);
-    Str.replace(34+Str2.length()-3+4,3,Str2);
-    Str.replace(40+Str2.length()-3+5,3,Str2);
+    Str.replace(14+2*(Str2.length()-3),3,Str2);
+    Str.replace(23+3*(Str2.length()-3),3,Str2);
+    Str.replace(30+4*(Str2.length()-3),3,Str2);
+    Str.replace(34+5*(Str2.length()-3),3,Str2);
+    Str.replace(40+6*(Str2.length()-3),3,Str2);
     std::cout << Str;
     return 0;
 }
