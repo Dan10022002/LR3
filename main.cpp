@@ -99,7 +99,7 @@ int main() {
     int l3;
     l3 = l2-l1;
     std::cout << Str.substr(l1-1,l3+1) << std::endl;
-    Str = "Can you can a can as a canner can can a can?            ";
+    Str = "Can you can a can as a canner can can a can?";
     std::cout << "Enter your word: ";
     std::string Str2;
     std::cin >> Str2;
