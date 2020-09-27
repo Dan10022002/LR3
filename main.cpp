@@ -17,7 +17,7 @@ int main() {
         }
         s = (std::rand() % 21) - 10;
         std::cout << "The " << i << " number is " << s;
-        std::cout << " the resuld is " << s/(k[2]) << "\n";
+        std::cout << " the result is " << s/(k[2]) << "\n";
     }
     std::cout << "The end of the task one.\n";
     std::cout << "Task two.\n";
