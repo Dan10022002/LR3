@@ -3,22 +3,25 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <ctime>
 
 int main() {
+    std::srand(std::time(nullptr));
     std::cout << "Task one.\n";
     int k[10];
-    double s;
-    k[2] = (std::rand() % 21) - 10;
-    std::cout << "The second number is " << k[2] << "\n";
-    for (int i=1;i<=10;++i) {
-        if (i==2) {
-            std::cout << "The " << i << " number is " << k[2];
-            std::cout << " the result is " << k[2] << "\n";
-        }
-        s = (std::rand() % 21) - 10;
-        std::cout << "The " << i << " number is " << s;
-        std::cout << " the result is " << s/(k[2]) << "\n";
+    for (int i = 0; i < 10; ++i) {
+        k[i] = std::rand() % 21 - 10;
+        std::cout << "The " << i+1 << " number is " << k[i];
+        std::cout << "\n";
     }
+    std::cout << "\n";
+    double s = k[1];
+    double r;
+    for (int i = 0; i < 10; ++i) {
+        double r = k[i] / s;
+        std::cout << "The result is " << r << "\n";
+    }
+    std::cout << "\n";
     std::cout << "The end of the task one.\n";
     std::cout << "Task two.\n";
     std::cout << "Enter n (n>10): ";
@@ -75,21 +78,29 @@ int main() {
         b = b + h;
     }
     std::cout << "The sum of a vector is " << b << std::endl;
-    for (int h=1;h<m;h++) {
-        std::cout << Vec[h] << " ";
+    for (int i = 0; i < Vec.size(); ++i) {
+        if (Vec[i] == 0) {
+            Vec.erase(Vec.begin()+i);
+            break;
+        }
+    }
+    for (int h: Vec){
+        std::cout << h << " ";
     }
     std::cout << "\n";
     std::cout << "The end of the task three.\n";
     std::cout << "Task four.\n";
-    std::string Str;
+    std::string S;
     std::cout << "Enter your text: ";
-    std::cin >> Str;
-    std::cout << Str;
+    std::cin.ignore(10, '\n');
+    std::getline(std::cin, S);
+    std::cout << S;
     std::cout << "\n";
-    std::cout << "The length of your text is " << Str.length();
+    std::cout << "The length of your text is " << S.length();
     std::cout << "\n";
-    size_t a = count(Str.begin(),Str.end(),'3');
-    std::cout << "There are " << a << " meanings of '3'." << std::endl;
+    double a = count(S.begin(),S.end(),'3');
+    double part = a/S.length();
+    std::cout << "There part of meanings of '3' is " << part << std::endl;
     int l1;
     int l2;
     std::cout << "Enter l1: ";
@@ -98,18 +109,21 @@ int main() {
     std::cin >> l2;
     int l3;
     l3 = l2-l1;
-    std::cout << Str.substr(l1-1,l3+1) << std::endl;
-    Str = "Can you can a can as a canner can can a can?";
+    std::cout << S.substr(l1-1,l3+1) << std::endl;
+    S = "Can you can a can as a canner can can a can?";
     std::cout << "Enter your word: ";
-    std::string Str2;
-    std::cin >> Str2;
-    Str.replace(0,3,Str2);
-    Str.replace(8+Str2.length()-3,3,Str2);
-    Str.replace(14+2*(Str2.length()-3),3,Str2);
-    Str.replace(23+3*(Str2.length()-3),3,Str2);
-    Str.replace(30+4*(Str2.length()-3),3,Str2);
-    Str.replace(34+5*(Str2.length()-3),3,Str2);
-    Str.replace(40+6*(Str2.length()-3),3,Str2);
-    std::cout << Str;
+    std::string S2;
+    std::cin.ignore(10, '\n');
+    std::getline(std::cin, S2);
+    S.replace(S.find("can?"),3,S2);
+    S.replace(S.find("Can"),3,S2);
+    S2.push_back(' ');
+    for (int i=0;i<4;i++)
+    {
+        int point;
+        point = S.find("can ");
+        S.replace(point,4,S2);
+    }
+    std::cout << S << std::endl;
     return 0;
 }
